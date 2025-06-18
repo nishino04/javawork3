@@ -6,7 +6,7 @@ public class Manager {
 	Goblin gob;
 	Slime sli;
 	Potion p;
-	eather e;
+	Eather e;
 	Board board;
 	public void start() {
 		init();
@@ -29,9 +29,17 @@ public class Manager {
 			}break;
 		case 'g':
 			System.out.println("ゴブ出現");
+			BattleManager.fight(hero, gob);
+			if(gob.hp<=0) {
+				board.map[gob.y][gob.x]='.';
+			}
 			break;
 		case 's':
 			System.out.println("suraimu！");
+			BattleManager.fight(hero, sli);
+			if(sli.hp<=0) {
+				board.map[sli.y][sli.x]='.';
+			}
 			break;
 		case'.':
 			break;
@@ -41,6 +49,8 @@ public class Manager {
 	}
 	
 	public void init() {
+		System.out.println("Map上の敵を全て倒しましょう！");
+		System.out.println("ゲームスタート！");
 		this.board = new Board();
 		board.makeMap();  // マップ作成
 		this.gob  = new Goblin();
@@ -51,9 +61,8 @@ public class Manager {
 		hero.setPosition(board);
 		this.p=new Potion("ポーション", 'p');
 		p.setPosition(board);
-		this.e=new eather("エーテル", 'e');
+		this.e=new Eather("エーテル", 'e');
 		e.setPosition(board);
-		board.printMap(hero);
 	}
 	
 }

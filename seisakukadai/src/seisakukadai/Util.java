@@ -19,7 +19,7 @@ public class Util {
 		  }
 		return new String(s);
 	}
-	public static Map<String,String> kaki(List<String> s){
+	public static Map<String,String> kaki(List<String> s){//リストを分解してMapに入れなおす
 		String ss;
 		Map<String,String> m=new HashMap<>();
 		for(int i=0;i<s.size();i++) {

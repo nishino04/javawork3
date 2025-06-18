@@ -13,6 +13,7 @@ public static void mng() {
 		break;
 	case 2:
 		System.out.println("既に登録されている単語と説明を表示します。");
+		break;
 	case 3:
 		System.out.println("ランダムに単語を表示します");
 	default:

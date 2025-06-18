@@ -8,6 +8,7 @@ public abstract class Character {
 	int y;
 	int x;
 	int hp;
+	int mp;
 	String name;
 	char suffix;
 	List<Item>items;
@@ -16,6 +17,7 @@ public abstract class Character {
 		this.name = name;
 		this.suffix = suffix;
 		this.hp = 100;
+		this.mp = 50;
 		this.items=new ArrayList<>();
 	}
 
@@ -57,6 +59,9 @@ public abstract class Character {
 			case'u':
 				useItem();
 				break;
+			case'i':
+				printInfo();
+				break;
 			default:
 				break;
 		}
@@ -88,21 +93,66 @@ public abstract class Character {
 			return false;
 		}
 	}
-	public void useItem() {
+	char selectItem() {
 		if(items.size()==0) {
 			System.out.println("まだ何も持ってない…");
+			return '9';
+		}
+		char ch='9';
+		do {
+			System.out.println("今持っているのは");
+			for(int i=0;i<items.size();i++ ) {
+				System.out.print("("+i+")");
+				System.out.println(items.get(i).name);
+			}
+			String str="どれつかうん？\n";
+			for(int i=0;i<items.size();i++) {
+			str+=("("+i+")")+items.get(i).name;
+			}
+			str+="(9)つかわん";
+			ch =Util.choice(str);
+		}while (!isNum(ch)||!isValid(ch));
+			return ch;
+	}
+	private boolean isNum(char ch) {
+		if(ch>='0'&&ch<='9') {
+			return true;
+		}
+		return false;
+	}
+	private boolean isValid(char ch) {
+		int n=ch-'0';
+		return n<items.size();
+	}
+	public void useItem() {
+		char ch =selectItem();
+		int num =ch-'0';
+		if(ch=='9') {
 			return;
 		}
-		System.out.println("今持っているのは");
-		for(int i=0;i<items.size();i++ ) {
-			System.out.print("("+i+")");
-			System.out.println(items.get(i).name);
+		if(items.get(num) instanceof Potion p) {
+				this.hp=Math.min(this.hp+p.reHp, 100);
+				p.reHp=0;
+				System.out.println(this.name+"は"+p.name+"を使用した！");
+				System.out.println("HPが回復し"+this.hp+"になった！");
+				items.remove(num);
+			}else if(items.get(num) instanceof Eather e) {
+				this.mp=Math.min(this.mp+e.reMp, 50);
+				e.reMp=0;
+				System.out.println(this.name+"は"+e.name+"を使用した！");
+				System.out.println("MPが回復し"+this.mp+"になった！");
+				items.remove(num);
 		}
-		String str="どれつかうん？\n";
-		for(int i=0;i<items.size();i++) {
-			str+=("("+i+")")+items.get(i).name;
-		}
-		str+="(9)つかわん";
-		System.out.println(str);
 	}
+	public void printInfo() {
+		String str="HP:"+this.hp+"MP:"+this.mp+"持ち物：";
+		String s ="なし";
+		if(!this.items.isEmpty()) {
+		for(Item w:this.items) {
+			str+=" "+w.name;
+		}
+			System.out.println(str);}
+		else {
+			System.out.println(str+s);}
+		}		
 }  // class end

@@ -14,7 +14,7 @@ public class Test {
 //		for(String s:Util.kaki(li).keySet()) {
 //			j.wl.put(j.wl.size(), s);
 //		}
-		Ymkk.kakikomi(Util.kaki(li));
+		Ymkk.kakikomi(Util.makeMap(li));
 		
 //		System.out.println(Util.kaki(li).get(j.wl.get(0)));
 //		System.out.println(Util.kaki(li).get(j.wl.get(1)));

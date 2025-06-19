@@ -3,7 +3,8 @@ package seisakukadai;
 public class Main {
 
 	public static void main(String[] args) {
-		Mng.mng();
+		Mng mng=new Mng();
+		mng.mng();
 		
 		//		Jisyo j=new Jisyo();
 //		j.touroku();

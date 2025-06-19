@@ -70,7 +70,7 @@ public abstract class Character {
 	
 	private boolean isValid(char ch) {
 		int n = ch - '0';
-		return n < itemList.size();
+		return n < itemList.size()||n==9;
 	}
 	
 	private boolean isNum(char ch) {
@@ -144,5 +144,12 @@ public abstract class Character {
 			x = Math.min(x+1, board.xsize-1);
 		}
 		}
+	}
+	public void fireball(Monster m){
+		System.out.println(this.name + "は" + m.name + "に火の玉を放った！");
+		int damage = new Random().nextInt(40,60);
+		m.hp -= damage;
+		this.mp-=10;
+		System.out.println(m.name + "に" + damage + "ポイントのダメージを与えた");
 	}
 }  // class end

@@ -4,15 +4,29 @@ public class Manager {
 	Board board;
 	Goblin goblin;
 	Slime slime;
-	Hero hero;
+	Hero her;
 	Potion potion;
 	Ether ether;
-	
+	Wizard hero;
+	boolean a;
 	public void start() {
 		init();
 		while (hero.hp > 0) {
 			board.printMap(hero);
 			checkHere();
+			a=false;
+			for(char[] o:board.map) {
+				for(char n:o) {
+					if((n=='g'||n=='s')) {
+						 a=true;
+					}
+				}
+			}
+			if(a==false) {
+				System.out.println("全ての敵を倒した！");
+				System.out.println("ゲーム終了");
+				break;
+			}
 			hero.selectAction(board);
 		}
 	}
@@ -57,7 +71,7 @@ public class Manager {
 		potion.setPosition(board);
 		this.ether = new Ether();
 		ether.setPosition(board);
-		this.hero = new Hero();
+		this.hero = new Wizard();
 		hero.setPosition(board);
 	}
 }

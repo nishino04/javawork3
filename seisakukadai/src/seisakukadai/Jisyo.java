@@ -1,19 +1,13 @@
 package seisakukadai;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.TreeMap;
 
 public class Jisyo {
-	Map<Integer,String> wl=new TreeMap<>();
-	Map<Integer,List<String>> wls=new TreeMap<>();
-	Map<String,String> wds=new HashMap<>();
-	public static void touroku() {
-		Map<Integer,String> wl=new TreeMap<>();
-		Map<String,String> wds=new HashMap<>();
+//	Map<Integer,String> wl=new TreeMap<>();
+//	Map<Integer,List<String>> wls=new TreeMap<>();
+//	Map<String,String> wds=new HashMap<>();
+	public static void touroku(Map<String,String>wds,Map<Integer,String>wl) {
 		System.out.println("登録するワードを入力してね！");
 		String str =new Scanner(System.in).nextLine();
 		if(wds.containsKey(str)) {
@@ -36,15 +30,19 @@ public class Jisyo {
 		wds.put(str, des);	
 		wl.put(wl.size(), str);
 		Ymkk.kakikomi(wds);
+		Ymkk.wlkaki(wl);
 		System.out.println("登録完了しました！");
 	}
-	public static void itiran() {
-		List<String>lis=new ArrayList<>();
-		lis=Ymkk.yomikomi();
-		Map<String,String> wds=new HashMap<>();
-		wds=Util.kaki(lis);
+	public static void itiran(Map<String,String>wds,Map<Integer,String>wl) {
+			for(int i=0;i<wl.size();i++) {
+				String s=wl.get(i);
+				System.out.println("・"+wl.get(i)+"　…"+wds.get(s));
+			}
+		}
+		
+	
 	}
-}
+
 
 
 

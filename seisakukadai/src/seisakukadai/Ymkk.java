@@ -24,7 +24,9 @@ public class Ymkk {
 				int ch =fr.read();
 				StringBuilder sb=new StringBuilder();
 				while(ch>-1) {//char配列から一つずつ取り出す
-					sb.append((char)ch);
+					if(ch!='\n') {
+						sb.append((char)ch);
+					}
 //					System.out.println(sb);
 					if(((char)ch)=='\n'||ch==0) {//改行を目印にして配列に収める
 						String s=new String(sb);
@@ -68,8 +70,10 @@ public class Ymkk {
 				//System.out.println(fr);//テスト用
 				int ch =fr.read();
 				StringBuilder sb=new StringBuilder();
-				while(ch>-1) {//char配列から一つずつ取り出す
-					sb.append((char)ch);
+				while(ch>-1) {
+					if(ch!='\n') {
+						sb.append((char)ch);
+					}//char配列から一つずつ取り出す
 //					System.out.println(sb);
 					if(((char)ch)=='\n') {//改行を目印にして配列に収める
 						String s=new String(sb);

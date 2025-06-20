@@ -1,6 +1,7 @@
-package seisakukadai;
+package wordbook;
 
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -11,6 +12,17 @@ public class Util {
 		System.out.println(s);
 		char ch =new Scanner(System.in).next().charAt(0);
 		return ch;
+	}
+	public static int choiceInt(String s) {//選択肢用メソッド…数字入力
+		System.out.println(s);
+		try{
+			int i =new Scanner(System.in).nextInt();
+		
+		return i;
+		}catch(InputMismatchException e){
+			int d=0;
+			return d;
+		}
 	}
 	public static String nuki(List<String> l){//配列を文字列に変換する
 		StringBuilder s=new StringBuilder();  

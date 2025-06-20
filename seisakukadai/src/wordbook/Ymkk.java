@@ -1,4 +1,4 @@
-package seisakukadai;
+package wordbook;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 public class Ymkk {
-	String Fname;
 	
 	public static  List<String> yomikomi() {//テキストファイルを読み込んで行ごとに配列にする
 		File f=new File(("Jisyo.txt"));

@@ -24,12 +24,16 @@ public class Sakujo {
 				int size=wl.size();
 				for(int v=i2;v<wl.size();v++) {
 					if(v<size){
-					wl.put(v, wl.get((v+1)));}
+					wl.put(v, wl.get((v+1)));
+					//wds.put(wl.get((v+1)),wds.get(wl.get(v+1)));
+					}
 				}
 				if(i2!=size) {
+					//wds.remove(wl.get((wl.size()-1)));
 					wl.remove(wl.size()-1);
+					
 				}
-				System.out.println("登録番号["+i2+"]を削除しました");
+				System.out.println("登録番号["+i2+"]:"+s+"を削除しました");
 				Ymkk.wlkaki(wl);
 				Ymkk.kakikomi(wds);
 				break;

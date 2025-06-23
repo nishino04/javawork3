@@ -38,6 +38,8 @@ public class Util {
 			ss=s.get(i);
 			String[]lis=ss.split("[,]");
 			m.put(lis[0],lis[1]);
+			//System.out.println(lis[0]);
+			//System.out.println(lis[1]);
 			}
 		return m;
 	}

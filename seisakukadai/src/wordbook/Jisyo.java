@@ -10,13 +10,13 @@ public class Jisyo {
 
 	public static void touroku(Map<String,String>wds,Map<Integer,String>wl) {
 		System.out.println("登録する言葉を入力してください");
-		String str =new Scanner(System.in).nextLine();
+		String str =new Scanner(System.in,"Shift-JIS").nextLine();
 		if(wds.containsKey(str)) {
 			System.out.println("既に登録されています！");
 			return;
 		}
 		System.out.println("登録する解説を入力してください");
-		String des =new Scanner(System.in).nextLine();
+		String des =new Scanner(System.in,"Shift-JIS").nextLine();
 		System.out.println("登録する言葉："+str);
 		System.out.println("登録する解説："+des);
 		char ch=Util.choice("これでよろしいですか？		y/n");
